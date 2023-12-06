@@ -18,4 +18,16 @@ df = pd.json_normalize(data)
 
 # Save the DataFrame to a CSV file
 df.to_csv('weather_dataset.csv', index=False)
-fhgg
+
+# Read the CSV file
+df = pd.read_csv('weather_dataset.csv')
+
+# Replace missing values (assuming NaN represents missing values)
+df.fillna(value, inplace=True)
+
+# Remove outliers (you can customize this based on your dataset and criteria)
+# For example, removing rows where temperature is below 0 or above 40 (just as an example)
+df = df[(df['main.temp'] > 0) & (df['main.temp'] < 40)]
+
+# Save the cleaned DataFrame to a new CSV file
+df.to_csv('cleaned_weather_dataset.csv', index=False)
